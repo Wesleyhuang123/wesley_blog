@@ -1,0 +1,20 @@
+---
+title: "First Post"
+author: "Wesley Huang"
+date: "2022-09-07"
+categories: [r,learn]
+image: "image.jpg"
+---
+
+This is a post with executable code.
+
+```{r}
+1 + 1
+
+```
+
+## header two
+
+Add my own stuff.
+
+add stuff. bbbb

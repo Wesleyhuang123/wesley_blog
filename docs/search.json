@@ -14,11 +14,25 @@
     "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
+    "objectID": "posts/first-post/index.html",
+    "href": "posts/first-post/index.html",
+    "title": "First Post",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/first-post/index.html#header-two",
+    "href": "posts/first-post/index.html#header-two",
+    "title": "First Post",
+    "section": "header two",
+    "text": "header two\nAdd my own stuff.\nadd stuff. bbbb"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "wesley_blog",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 4, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 4, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
