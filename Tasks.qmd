@@ -3,3 +3,13 @@ title: "Tasks"
 author: "Wesley"
 editor: visual
 ---
+
+1.  do basic math
+
+```{r}
+1+1
+```
+
+```{r}
+90/30
+```
