@@ -1,38 +1,17 @@
 [
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "posts/first-post/index.html",
     "href": "posts/first-post/index.html",
-    "title": "First Post",
+    "title": "First Blog Post",
     "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/first-post/index.html#header-two",
-    "href": "posts/first-post/index.html#header-two",
-    "title": "First Post",
-    "section": "header two",
-    "text": "header two\nAdd my own stuff.\nadd stuff. bbbb"
+    "text": "The concept of “R” language appears to be quite difficult starting from scratch and conquering it in a short amount of time seems to be a task out of reality. Despite all of this, I am eager to get to practice and improve in the craft of coding. By the end of this program, I hope that I will be well versed in learning more about coding from my mentor Professor Matt Crump and my peer Drew. I am excited about the upcoming tasks this semester and to seek the results from the experiments we will be conducting."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "wesley_blog",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 4, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "r\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nWesley Huang\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
