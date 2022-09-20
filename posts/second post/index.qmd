@@ -1,24 +1,15 @@
 ---
 title: "Second Blog Post"
 author: "Wesley Huang"
-date: "2022-09-14"
+date: "2022-09-20"
 categories: [r,learn]
-image: "images/cover.png"
+image: "images/beach.jpeg"
 ---
 
-## 9/9/22
+## 9/20/20
 
-The concept of "R" language appears to be quite difficult starting from scratch and conquering it in a short amount of time seems to be a task out of reality. Despite all of this, I am eager to get to practice and improve in the craft of coding. By the end of this program, I hope that I will be well versed in learning more about coding from my mentor Professor Matt Crump and my peer Drew. I am excited about the upcoming tasks this semester and to seek the results from the experiments we will be conducting.
+Week 2 of learning to code:
 
-Some issues I have ran into my first week of learning to blog on RStudio are:
+This week I was able to figure out how to code problems 1,2, and 4 on my own. I found problems 3 to 5 a bit challenging but after watching Professor Crump's videos I was able to figure it out. Professor Crump does a great job at breaking down each function and explaining how the code is executed. However, problem 6 seemed to be the most challenging for me and I got lost trying to follow the code executed.
 
-1.  How to create a new post with my own images (Personal or from the Internet)
-2.  How to properly get my changes from RStudio onto github
-
-Some goals I have for next week:
-
-1.  I plan to personalize my own blog with either my own images or with some form of creativity that I can come up with.
-2.  I plan to learn how to efficiently create new posts and get my changes onto RStudio.
-3.  I look forward to the next steps in the research process and tasks my mentor may provide me to learn more about coding.
-
-![](images/Screen%20Shot%202022-09-14%20at%2012.27.46%20PM.png)
+Another problem I ran into was trying to change my image on my second blog post to a photo I found from google. It was a jpeg file and I am not entirely aware of how to do that. I tried images/(name).jpeg but it did not work. Hopefully, I can figure this out with my next meeting with the Professor.

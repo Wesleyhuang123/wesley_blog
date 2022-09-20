@@ -4,7 +4,7 @@ author: "Wesley"
 editor: visual
 ---
 
-1.  do basic math
+1.  Do basic math
 
 ```{r}
 1+1
@@ -13,3 +13,46 @@ editor: visual
 ```{r}
 90/30
 ```
+
+2.  Put numbers into variables, do simple math on the variables
+
+    ```{r}
+    z=5
+    b=4
+    z+b
+    ```
+
+3.  Write code that will place the numbers 1 to 100 separately into a variable using for loop. Then, again using the seq function.
+
+    ```{r}
+    a <- 1:100
+    a
+    ```
+
+4 . Find the sum of all integers from 1 to 100.
+
+```{r}
+1:100
+sum(1:100)
+
+```
+
+5.  Write a function to find the sum of all integers between any two values.
+
+    ```{r}
+    my_sum_range <- function(min,max){
+      my_numbers <- min:max
+      the_sum <- 0
+      for( i in my_numbers){
+        the_sum <- the_sum+ i
+      }
+      return(the_sum)
+      
+      }
+    my_sum_range(min=10, max=30)
+    ```
+
+6.  List all of the odd numbers from 1 to 100.
+
+    ```{}
+    ```
