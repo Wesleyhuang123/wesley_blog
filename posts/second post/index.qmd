@@ -13,3 +13,5 @@ Week 2 of learning to code:
 This week I was able to figure out how to code problems 1,2, and 4 on my own. I found problems 3 to 5 a bit challenging but after watching Professor Crump's videos I was able to figure it out. Professor Crump does a great job at breaking down each function and explaining how the code is executed. However, problem 6 seemed to be the most challenging for me and I got lost trying to follow the code executed.
 
 Another problem I ran into was trying to change my image on my second blog post to a photo I found from google. It was a jpeg file and I am not entirely aware of how to do that. I tried images/(name).jpeg but it did not work. Hopefully, I can figure this out with my next meeting with the Professor.
+
+My goals for next week are to continue with the practice problems.
