@@ -54,5 +54,6 @@ sum(1:100)
 
 6.  List all of the odd numbers from 1 to 100.
 
-    ```{}
-    ```
+```{r}
+seq(1,100,2)
+```
