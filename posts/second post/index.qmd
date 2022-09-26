@@ -8,6 +8,8 @@ image: "images/beach.jpeg"
 
 ## 9/20/20
 
-Week 3: Directed Forgetting Paper
+Week 3: Directed Forgetting Paper Thoughts
 
+It was interesting to know that through each experiments the researchers were able to produce results that indicate that a directed forgetting reduces memory for perceptual details of pictures. I liked how each experiment, the researchers were trying to build on possible errors to disprove in the previous experiments. For example, adding the control condition in experiment 3 where participants were simply told to remember all the study items for a later recognition test. Doing so can more accurately test the item-based directed forgetting because R-cued items in the DF experimental condition would be greater than memory performance for the items in the remember-all control condition. 
 
+In my opinion, I think that the exemplar distractor produced their results because the images were very similar to the original ones from their categories. This probably led to the longer response times and the less portion of accurcy that were correct compared to the Novel Test. 
