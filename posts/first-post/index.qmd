@@ -6,7 +6,7 @@ categories: [r,learn]
 image: "image.jpg"
 ---
 
-## 9/9/22
+Week 1: "R" Language"
 
 The concept of "R" language appears to be quite difficult starting from scratch and conquering it in a short amount of time seems to be a task out of reality. Despite all of this, I am eager to get to practice and improve in the craft of coding. By the end of this program, I hope that I will be well versed in learning more about coding from my mentor Professor Matt Crump and my peer Drew. I am excited about the upcoming tasks this semester and to seek the results from the experiments we will be conducting.
 

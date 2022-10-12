@@ -1,0 +1,9 @@
+---
+title: "Fifth Blog Post"
+author: "Wesley Huang"
+date: "2022-10-16"
+categories: [r,learn]
+image: "images/beach.jpeg"
+---
+
+Week 5: Directed Forgetting Colin M. Macleod
