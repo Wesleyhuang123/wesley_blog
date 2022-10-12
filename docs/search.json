@@ -28,11 +28,18 @@
     "text": "The concept of “R” language appears to be quite difficult starting from scratch and conquering it in a short amount of time seems to be a task out of reality. Despite all of this, I am eager to get to practice and improve in the craft of coding. By the end of this program, I hope that I will be well versed in learning more about coding from my mentor Professor Matt Crump and my peer Drew. I am excited about the upcoming tasks this semester and to seek the results from the experiments we will be conducting.\nSome issues I have ran into my first week of learning to blog on RStudio are:\n\nHow to create a new post with my own images (Personal or from the Internet)\nHow to properly get my changes from RStudio onto github\n\nSome goals I have for next week:\n\nI plan to personalize my own blog with either my own images or with some form of creativity that I can come up with.\nI plan to learn how to efficiently create new posts and get my changes onto RStudio.\nI look forward to the next steps in the research process and tasks my mentor may provide me to learn more about coding."
   },
   {
+    "objectID": "posts/Fourth Post/index.html",
+    "href": "posts/Fourth Post/index.html",
+    "title": "Fourth Blog Post",
+    "section": "",
+    "text": "Upon coding and gathering information on the experiment, the first six participants were able to produce these results:\nOur Data:\n\nWe were able to reproduce results similar to the original Ahmad (2019) experiment regarding directed forgetting. As indicated in the graph above for 500ms and 2000ms, we were able to find directed forgetting for both the exemplar and novel tests. Additionally, as expected people were more likely to get more correct and “remember” more during the novel test than the exemplar test because simply the novel test was designed to be easier to recognize previously seen images. However, the results of the exemplar test in the 2000ms appears to be considerably dramatic and the proportion correct between the “Forgetting” and “Remembering” in the exemplar test should close up as we get more results.\nThis is a good sign. Going forward, if we are able to continue to acquire similar results as we collect more data, then we can safely say that our changes to this experiment from the one that Patrick did were helpful in attempting to replicate the original results. We expect to collect results from 50 people."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "wesley_blog",
     "section": "",
-    "text": "r\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 26, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nWesley Huang\n\n\n\n\n\n\nNo matching items"
+    "text": "r\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 26, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nWesley Huang\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
