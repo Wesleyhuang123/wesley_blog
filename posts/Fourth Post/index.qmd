@@ -3,7 +3,7 @@ title: "Fourth Blog Post"
 author: "Wesley Huang"
 date: "2022-10-12"
 categories: [r,learn]
-image: "images/beach.jpeg"
+image: "images/Nature.jpeg"
 ---
 
 Week 4: Research

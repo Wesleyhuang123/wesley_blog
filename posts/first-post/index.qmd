@@ -3,7 +3,7 @@ title: "First Blog Post"
 author: "Wesley Huang"
 date: "2022-09-09"
 categories: [r,learn]
-image: "image.jpg"
+image: "images/Horizon.jpeg"
 ---
 
 Week 1: "R" Language"

@@ -3,7 +3,7 @@ title: "Second Blog Post"
 author: "Wesley Huang"
 date: "2022-09-20"
 categories: [r,learn]
-image: "images/beach.jpeg"
+image: "images/Cool Image.jpeg"
 ---
 
 ## 9/20/20
