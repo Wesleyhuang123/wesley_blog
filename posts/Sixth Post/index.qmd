@@ -1,0 +1,16 @@
+---
+title: "Sixth Blog Post"
+author: "Wesley Huang"
+date: "2022-10-21"
+categories: [r,learn]
+image: "images/Mountain.jpeg"
+---
+
+Week 6: Slides
+
+This week I learned about creating a slides tab on my blog website and the numerous of other tools available to help me in editing those slides. I discussed with Professor Crump about the best approaches for me to take in creating a nice presentation and how to execute it efficiently on the day of the conference in December.
+
+My goals for this week are:
+
+1.  To create a format I want for my slides (Introduction, Research Question, Why It Matters, Research Method, Conclusion...etc)
+2.  Play around with reveal js functions on R Studio and experiment different styles I can use to make my presentation more interesting.
