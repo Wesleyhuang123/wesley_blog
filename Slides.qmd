@@ -5,12 +5,13 @@ editor: source
 format: revealjs
 ---
 
-## Introduction
+## Introduction {background-color="Aquamarine"}
+Hi, my name is Wesley and today I will be presenting my research on directed forgetting. 
 
-## Research Question/Why It Matters
+## Research Question/Why It Matters {background-color="Aquamarine"}
 
-## Research Method
+## Research Method {background-color="Aquamarine"}
 
-## Results
+## Results {background-color="Aquamarine"}
 
-## Conclusion
+## Conclusion {background-color="Aquamarine"}
