@@ -3,7 +3,7 @@ title: "Fifth Blog Post"
 author: "Wesley Huang"
 date: "2022-10-16"
 categories: [r,learn]
-image: "images/Water.jpeg"
+image: "images/Water.Jpeg"
 ---
 
 Week 5: Directed Forgetting Paper
