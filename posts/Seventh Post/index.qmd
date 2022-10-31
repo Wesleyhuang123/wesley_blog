@@ -1,0 +1,17 @@
+---
+title: "Seventh Blog Post"
+author: "Wesley Huang"
+date: "2022-10-31"
+categories: [r,learn]
+image: "images/Nature2.jpeg"
+---
+
+Week 7: Data
+
+This week I learned about loading data onto R Studio and different ways to analyze the data. I practiced with the different coding functions on my tasks slide.
+
+My goals for this week are:
+
+1.  Read through the sources supplied to me and get a gist of data analysis on R Studio.
+2.  To successfully install and display data from tidyverse and load it onto R Studio.
+3.  Analyze the installed data using different coding functions from the resources Professor Crump supplied to me.
