@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "Tasks.html",
+    "href": "Tasks.html",
+    "title": "Tasks",
+    "section": "",
+    "text": "1+1\n\n[1] 2\n\n\n\n90/30\n\n[1] 3\n\n\n\nPut numbers into variables, do simple math on the variables\n\nz=5\nb=4\nz+b\n\n[1] 9\n\n\nWrite code that will place the numbers 1 to 100 separately into a variable using for loop. Then, again using the seq function.\n\na <- 1:100\na\n\n  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18\n [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36\n [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54\n [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72\n [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90\n [91]  91  92  93  94  95  96  97  98  99 100\n\n\n\n4 . Find the sum of all integers from 1 to 100.\n\n1:100\n\n  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18\n [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36\n [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54\n [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72\n [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90\n [91]  91  92  93  94  95  96  97  98  99 100\n\nsum(1:100)\n\n[1] 5050\n\n\n\nWrite a function to find the sum of all integers between any two values.\n\nmy_sum_range <- function(min,max){\n  my_numbers <- min:max\n  the_sum <- 0\n  for( i in my_numbers){\n    the_sum <- the_sum+ i\n  }\n  return(the_sum)\n\n  }\nmy_sum_range(min=10, max=30)\n\n[1] 420\n\n\nList all of the odd numbers from 1 to 100.\n\n\nseq(1,100,2)\n\n [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49\n[26] 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97 99\n\n\n\nGenerate 100 random numbers\n\n  for (i in 101) {\n\n  }\n\n\nFizzBuzz Problem\n\n  for (i in 1:100){\n    if(i%%3==0){\n      print(\"Fizz\")\n    if(i%%5==0){\n      print(\"Buzz\")\n      }\n    }\n  }\n\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n\n\n\nFizzBuzz Problem\n\nfor (i in 1:100)\n  if(i%%3==0 && i%%5==0){\n    print(\"FizzBuzz\")\n  } else if(i%%5==0){\n    print(\"Buzz\")\n  } else if(i%%3==0){\n    print(\"Fizz\")\n    }\n\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"FizzBuzz\"\n[1] \"Fizz\"\n[1] \"Buzz\"\n[1] \"Fizz\"\n[1] \"Fizz\"\n[1] \"Buzz\""
+  },
+  {
+    "objectID": "posts/second post/index.html",
+    "href": "posts/second post/index.html",
+    "title": "Third Blog Post",
+    "section": "",
+    "text": "Week 3: Directed Forgetting Paper Thoughts\nIt was interesting to know that through each experiments the researchers were able to produce results that indicate that a directed forgetting reduces memory for perceptual details of pictures. I liked how each experiment, the researchers were trying to build on possible errors to disprove in the previous experiments. For example, adding the control condition in experiment 3 where participants were simply told to remember all the study items for a later recognition test. Doing so can more accurately test the item-based directed forgetting because R-cued items in the DF experimental condition would be greater than memory performance for the items in the remember-all control condition.\nIn my opinion, I think that the exemplar distractors produced their results because the images were very similar to the original ones from their categories. This probably led to the longer response times and the less portion of accuracy that were correct compared to the Novel Test. I also think that a key detail to note is that the researchers took different participants each time for each experiment. Each participant may have had a different skill set that could have affect the results, however by choosing different participants we can guarantee that each different experiment had results based on participants who were taking the memory tests fresh each time and not getting better from experiment to experiment.\nThoughts and Feedback on New Experiment: The images were flashing too quickly in the beginning that there was no time to pick up on perceptual details of an image. It was difficult to purposely remember/forget certain images. Additionally, at a specific time during the encoding phase (towards the middle and the end), it was difficult to keep my attention span on the test. At a certain point it felt tedious and it was difficult to make the decision to purposely remember or forget certain images. However, I felt like the exemplar distractor did make me have to think more before selecting an image during the memory test, where during the novel test without the distractors it was more easy for me to select the obvious image I saw previously. Overall, I think that the attention span is the most difficult to overcome to make the results of the experiment as accurate as possible"
+  },
+  {
+    "objectID": "posts/Seventh Post/index.html",
+    "href": "posts/Seventh Post/index.html",
+    "title": "Seventh Blog Post",
+    "section": "",
+    "text": "This week I learned about loading data onto R Studio and different ways to analyze the data. I practiced with the different coding functions on my tasks slide.\nMy goals for this week are:\n\nRead through the sources supplied to me and get a gist of data analysis on R Studio.\nTo successfully install and display data from tidyverse and load it onto R Studio.\nAnalyze the installed data using different coding functions from the resources Professor Crump supplied to me.\n\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6      ✔ purrr   0.3.5 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nstarwars\n\n# A tibble: 87 × 14\n   name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵\n   <chr>        <int> <dbl> <chr>   <chr>   <chr>     <dbl> <chr> <chr>  <chr>  \n 1 Luke Skywa…    172    77 blond   fair    blue       19   male  mascu… Tatooi…\n 2 C-3PO          167    75 <NA>    gold    yellow    112   none  mascu… Tatooi…\n 3 R2-D2           96    32 <NA>    white,… red        33   none  mascu… Naboo  \n 4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…\n 5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…\n 6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…\n 7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…\n 8 R5-D4           97    32 <NA>    white,… red        NA   none  mascu… Tatooi…\n 9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…\n10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon\n# … with 77 more rows, 4 more variables: species <chr>, films <list>,\n#   vehicles <list>, starships <list>, and abbreviated variable names\n#   ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld\n\nglimpse(starwars)\n\nRows: 87\nColumns: 14\n$ name       <chr> \"Luke Skywalker\", \"C-3PO\", \"R2-D2\", \"Darth Vader\", \"Leia Or…\n$ height     <int> 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…\n$ mass       <dbl> 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…\n$ hair_color <chr> \"blond\", NA, NA, \"none\", \"brown\", \"brown, grey\", \"brown\", N…\n$ skin_color <chr> \"fair\", \"gold\", \"white, blue\", \"white\", \"light\", \"light\", \"…\n$ eye_color  <chr> \"blue\", \"yellow\", \"red\", \"yellow\", \"brown\", \"blue\", \"blue\",…\n$ birth_year <dbl> 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …\n$ sex        <chr> \"male\", \"none\", \"none\", \"male\", \"female\", \"male\", \"female\",…\n$ gender     <chr> \"masculine\", \"masculine\", \"masculine\", \"masculine\", \"femini…\n$ homeworld  <chr> \"Tatooine\", \"Tatooine\", \"Naboo\", \"Tatooine\", \"Alderaan\", \"T…\n$ species    <chr> \"Human\", \"Droid\", \"Droid\", \"Human\", \"Human\", \"Human\", \"Huma…\n$ films      <list> <\"The Empire Strikes Back\", \"Revenge of the Sith\", \"Return…\n$ vehicles   <list> <\"Snowspeeder\", \"Imperial Speeder Bike\">, <>, <>, <>, \"Imp…\n$ starships  <list> <\"X-wing\", \"Imperial shuttle\">, <>, <>, \"TIE Advanced x1\",…\n\n?starwars\nview(starwars)\n\nncol(starwars)\n\n[1] 14\n\nnrow(starwars)\n\n[1] 87\n\ndim(starwars)\n\n[1] 87 14\n\ndim(starwars)[1]\n\n[1] 87\n\ndim(starwars)[2]\n\n[1] 14\n\nggplot(data=starwars, aes(x=height, y=mass))+ geom_point()\n\nWarning: Removed 28 rows containing missing values (geom_point).\n\n\n\n\nggplot(data=starwars, aes(x=height, y=birth_year))+ geom_point()\n\nWarning: Removed 44 rows containing missing values (geom_point)."
+  },
+  {
+    "objectID": "posts/Third Post/index.html",
+    "href": "posts/Third Post/index.html",
+    "title": "Second Blog Post",
+    "section": "",
+    "text": "Week 2: Coding\nThis week I was able to figure out how to code problems 1,2, and 4 on my own. I found problems 3 to 5 a bit challenging but after watching Professor Crump’s videos I was able to figure it out. Professor Crump does a great job at breaking down each function and explaining how the code is executed. However, problem 6 seemed to be the most challenging for me and I got lost trying to follow the code executed.\nAnother problem I ran into was trying to change my image on my second blog post to a photo I found from google. It was a jpeg file and I am not entirely aware of how to do that. I tried images/(name).jpeg but it did not work. Hopefully, I can figure this out with my next meeting with the Professor.\nMy goals for next week are to continue with the practice problems."
+  },
+  {
+    "objectID": "posts/Fifth Post/index.html",
+    "href": "posts/Fifth Post/index.html",
+    "title": "Fifth Blog Post",
+    "section": "",
+    "text": "Through the early history (Brown (1954), Muther (1965), Bjork (1972) ) of the memory experiments, the name “directed forgetting” was agreed upon by researchers for future experiments and data added onto the research. I wonder how this name came to be and what was the purpose behind the directed forgetting experiments. What results were we looking for and how did these results help us better understand cognition or improve the real world? I found it particularly interesting that Muther (1965) was able to find results that supported better recall on a list where 12 words were to be remembered, and 12 words were to be forgotten than a list where all 24 words had to be remembered. He explained these results to be due to a lowered attentional demand, reduced proactive interference, more focused rehearsal, and easier organization. We can relate this to the data we received in our novel/exemplar directed forgetting test for the first 6 participants. One important thing to note is that through the history of these experiments, the researchers often built upon research already done in the past without making big changes. This is something we did in our current experiment. Another important thing to note is that David Helms (1969) found that the F cue must be distinctive and explicit usage of the word “forget” appears to make a difference. This was done in our revised experiment from the original Patrick study where we only used F and R keys, now we explicitly use the words “Forget” or “Remember” and have a rating system in place that we can attribute to a better/more accurate results of directed forgetting. Initially, I thought that recognition would be better than recall since the act of recognizing something takes less cognitive skills than recalling something from your memory. However, in the paper studies have shown the opposite. Recall was found to be often more accurate than recognition. This is something that sparks interest in me and I wonder why this is the case."
+  },
+  {
+    "objectID": "posts/first-post/index.html",
+    "href": "posts/first-post/index.html",
+    "title": "First Blog Post",
+    "section": "",
+    "text": "The concept of “R” language appears to be quite difficult starting from scratch and conquering it in a short amount of time seems to be a task out of reality. Despite all of this, I am eager to get to practice and improve in the craft of coding. By the end of this program, I hope that I will be well versed in learning more about coding from my mentor Professor Matt Crump and my peer Drew. I am excited about the upcoming tasks this semester and to seek the results from the experiments we will be conducting.\nSome issues I have ran into my first week of learning to blog on RStudio are:\n\nHow to create a new post with my own images (Personal or from the Internet)\nHow to properly get my changes from RStudio onto github\n\nSome goals I have for next week:\n\nI plan to personalize my own blog with either my own images or with some form of creativity that I can come up with.\nI plan to learn how to efficiently create new posts and get my changes onto RStudio.\nI look forward to the next steps in the research process and tasks my mentor may provide me to learn more about coding."
+  },
+  {
+    "objectID": "posts/Fourth Post/index.html",
+    "href": "posts/Fourth Post/index.html",
+    "title": "Fourth Blog Post",
+    "section": "",
+    "text": "Upon coding and gathering information on the experiment, the first six participants were able to produce these results:\nOur Data:\n\nWe were able to reproduce results similar to the original Ahmad (2019) experiment regarding directed forgetting. As indicated in the graph above for 500ms and 2000ms, we were able to find directed forgetting for both the exemplar and novel tests. Additionally, as expected people were more likely to get more correct and “remember” more during the novel test than the exemplar test because simply the novel test was designed to be easier to recognize previously seen images. However, the results of the exemplar test in the 2000ms appears to be considerably dramatic and the proportion correct between the “Forgetting” and “Remembering” in the exemplar test should close up as we get more results.\nThis is a good sign. Going forward, if we are able to continue to acquire similar results as we collect more data, then we can safely say that our changes to this experiment from the one that Patrick did were helpful in attempting to replicate the original results. We expect to collect results from 50 people."
+  },
+  {
+    "objectID": "posts/Sixth Post/index.html",
+    "href": "posts/Sixth Post/index.html",
+    "title": "Sixth Blog Post",
+    "section": "",
+    "text": "This week I learned about creating a slides tab on my blog website and the numerous of other tools available to help me in editing those slides. I discussed with Professor Crump about the best approaches for me to take in creating a nice presentation and how to execute it efficiently on the day of the conference in December.\nMy goals for this week are:\n\nTo create a format I want for my slides (Introduction, Research Question, Why It Matters, Research Method, Conclusion…etc)\nPlay around with reveal js functions on R Studio and experiment different styles I can use to make my presentation more interesting."
+  },
+  {
+    "objectID": "Slides.html#introduction",
+    "href": "Slides.html#introduction",
+    "title": "Slides",
+    "section": "Introduction",
+    "text": "Introduction\nHi, my name is Wesley and today I will be presenting my research on directed forgetting."
+  },
+  {
+    "objectID": "Slides.html#research-questionwhy-it-matters",
+    "href": "Slides.html#research-questionwhy-it-matters",
+    "title": "Slides",
+    "section": "Research Question/Why It Matters",
+    "text": "Research Question/Why It Matters"
+  },
+  {
+    "objectID": "Slides.html#research-method",
+    "href": "Slides.html#research-method",
+    "title": "Slides",
+    "section": "Research Method",
+    "text": "Research Method"
+  },
+  {
+    "objectID": "Slides.html#results",
+    "href": "Slides.html#results",
+    "title": "Slides",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "Slides.html#conclusion",
+    "href": "Slides.html#conclusion",
+    "title": "Slides",
+    "section": "Conclusion",
+    "text": "Conclusion"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "wesley_blog",
+    "section": "",
+    "text": "r\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 26, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2022\n\n\nWesley Huang\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nlearn\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nWesley Huang\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  }
+]

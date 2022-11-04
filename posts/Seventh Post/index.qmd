@@ -15,3 +15,21 @@ My goals for this week are:
 1.  Read through the sources supplied to me and get a gist of data analysis on R Studio.
 2.  To successfully install and display data from tidyverse and load it onto R Studio.
 3.  Analyze the installed data using different coding functions from the resources Professor Crump supplied to me.
+
+```{r}
+library(tidyverse)
+starwars
+glimpse(starwars)
+?starwars
+view(starwars)
+
+ncol(starwars)
+nrow(starwars)
+dim(starwars)
+dim(starwars)[1]
+dim(starwars)[2]
+
+ggplot(data=starwars, aes(x=height, y=mass))+ geom_point()
+
+ggplot(data=starwars, aes(x=height, y=birth_year))+ geom_point()
+```

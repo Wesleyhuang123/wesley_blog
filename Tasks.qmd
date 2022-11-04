@@ -96,11 +96,3 @@ for (i in 1:100)
   
 ```
 
-```{r}
-install.packages("tidyverse")
-library(tidyverse)
-mydata <- read.csv(tidyverse)
-view(mydata)
-summary(mydata)
-
-```
