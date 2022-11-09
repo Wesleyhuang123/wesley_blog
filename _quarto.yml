@@ -12,6 +12,7 @@ website:
       - about.qmd
       - Tasks.qmd
       - Slides.qmd
+      - E3_DF_pairs.Rmd
 format:
   html:
     theme: minty

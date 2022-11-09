@@ -1,0 +1,678 @@
+---
+title: "E3_DF_paired"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{E2_DF_Blocked}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+Data collected 7/11/22
+
+# Load libraries
+
+```{r}
+library(pacman)
+library(dplyr)
+library(tidyverse)
+library(jsonlite)
+library(xtable)
+library(data.table)
+```
+
+## Import Data
+
+```{r}
+# Read the text file from JATOS ...
+read_file('data/E3/jatos_results_20221103143242.txt') %>%
+  # ... split it into lines ...
+  str_split('\n') %>% first() %>%
+  # ... filter empty rows ...
+  discard(function(x) x == '') %>%
+  # ... parse JSON into a data.frame
+  map_dfr(fromJSON, flatten=T) -> all_data
+```
+
+## Demographics
+
+```{r}
+library(tidyr)
+
+demographics <- all_data %>%
+  filter(trial_type == "survey-html-form") %>%
+  select(ID,response) %>%
+  unnest_wider(response) %>%
+  mutate(age = as.numeric(age))
+
+age_demographics <- demographics %>%
+  summarize(mean_age = mean(age),
+            sd_age = sd(age),
+            min_age = min(age),
+            max_age = max(age))
+
+factor_demographics <- apply(demographics[-1], 2, table)
+
+```
+
+A total of `r dim(demographics)[1]` participants were recruited from Amazon's Mechanical Turk. Mean age was `r round(age_demographics$mean_age, digits=1)` (range = `r age_demographics$min_age` to `r age_demographics$max_age` ). There were `r as.numeric(factor_demographics$sex["female"])` females, and `r as.numeric(factor_demographics$sex["male"])` males. There were `r as.numeric(factor_demographics$hand["Right"])` right-handed participants, and `r as.numeric(factor_demographics$hand["Both"])+as.numeric(factor_demographics$hand["Left"])` left or both handed participants. `r as.numeric(factor_demographics$vision["Normal"])` participants reported normal vision, and `r as.numeric(factor_demographics$vision["Corrected"])` participants reported corrected-to-normal vision. `r as.numeric(factor_demographics$english["First"])` participants reported English as a first language, and `r as.numeric(factor_demographics$english["Second"])` participants reported English as a second language.
+
+## Pre-processing
+
+We are interested in including participants who attempted to perform the task to the best of their ability. We adopted the following exclusion criteria.
+
+1. Lower than 75% correct during the encoding task. This means that participants failed to correctly press the F or R keys on each trial.
+
+
+```{r}
+# select data from the study phase
+# study_accuracy <- all_data %>%
+#   filter(experiment_phase == "study",
+#          is.na(correct) == FALSE) %>%
+#   group_by(ID)%>%
+#   summarize(mean_correct = mean(correct))
+
+study_accuracy <- all_data %>%
+  filter(experiment_phase == "study",
+         trial_type == "html-slider-response",
+         is.na(rt) == FALSE) %>%
+  mutate(response = as.numeric(unlist(response))) %>%
+  mutate(correct = case_when(encoding_instruction == "R" && response > 50 ~ TRUE,
+                             encoding_instruction == "R" && response < 50 ~ FALSE,
+                             encoding_instruction == "F" && response > 50 ~ FALSE,
+                             encoding_instruction == "F" && response < 50 ~ TRUE)) %>%
+  filter(is.na(correct) == FALSE) %>%
+  group_by(ID)%>%
+  summarize(mean_correct = mean(correct))
+
+study_excluded_subjects <- study_accuracy %>%
+  filter(mean_correct < .75) %>%
+  pull(ID)
+
+ggplot(study_accuracy, aes(x=mean_correct))+
+  coord_cartesian(xlim=c(0,1))+
+  geom_vline(xintercept=.75)+
+  geom_histogram()+
+  ggtitle("Histogram of mean correct responses \n for each subject during study phase")
+
+```
+
+2. More than 25% Null responses (120*.25 = 30) during test. NULL responses mean that the participant did not respond on a test trial after 10 seconds.
+
+
+```{r, eval=FALSE}
+# select data from the study phase
+test_null <- all_data %>%
+  filter(experiment_phase == "test"),
+         response =="NULL") %>%
+  group_by(ID) %>%
+  count()
+
+test_null_excluded <- test_null %>%
+  filter(n > (120*.25)) %>%
+  pull(ID)
+
+ggplot(test_null, aes(x=n))+
+  geom_vline(xintercept=30)+
+  geom_histogram()+
+  ggtitle("Histogram of count of null responses \n for each subject during test")
+
+```
+
+3. Higher than 75% response bias in the recognition task. This suggests that participants were simply pressing the same button on most trials. 
+
+
+```{r}
+test_response_bias <- all_data %>%
+  filter(experiment_phase == "test",
+         response !="NULL") %>%
+  mutate(response = as.numeric(response)) %>%
+  group_by(ID, response) %>%
+  count() %>%
+  pivot_wider(names_from = response,
+              values_from = n,
+              values_fill = 0) %>%
+  mutate(bias = abs(`0` - `1`)/120)
+
+test_response_bias_excluded <- test_response_bias %>%
+  filter(bias > .75) %>%
+  pull(ID)
+
+ggplot(test_response_bias, aes(x=bias))+
+  geom_vline(xintercept=.75)+
+  geom_histogram()+
+  ggtitle("Histogram of response bias \n for each subject during test phase")
+
+```
+
+4. Making responses too fast during the recognition memory test, indicating that they weren't performing the task. We excluded participants whose mean RT was less than 300 ms.
+
+```{r}
+test_mean_rt <- all_data %>%
+  filter(experiment_phase == "test",
+         response !="NULL",
+         rt != "NULL") %>%
+  mutate(rt = as.numeric(rt)) %>%
+  group_by(ID) %>%
+  summarize(mean_RT = mean(rt))
+
+test_mean_rt_excluded <- test_mean_rt %>%
+  filter(mean_RT < 300) %>%
+  pull(ID)
+
+ggplot(test_mean_rt, aes(x=mean_RT))+
+  geom_vline(xintercept=300)+
+  geom_histogram()+
+  ggtitle("Histogram of response bias \n for each subject during test phase")
+
+```
+
+5. Subjects are included if they perform better than 55% correct on the novel lures.
+
+```{r}
+test_mean_novel_accuracy <- all_data %>%
+  filter(experiment_phase == "test",
+         test_condition == "novel") %>%
+  mutate(correct = as.logical(correct)) %>%
+  group_by(ID) %>%
+  summarize(mean_correct = mean(correct))
+
+test_mean_novel_accuracy_excluded <- test_mean_novel_accuracy %>%
+  filter(mean_correct < .4) %>%
+  pull(ID)
+
+ggplot(test_mean_novel_accuracy, aes(x=mean_correct))+
+  geom_vline(xintercept=.4)+
+  geom_histogram()+
+  ggtitle("Histogram of mean accuracy for novel lures \n for each subject during test phase")
+
+```
+
+
+## All exclusions
+
+```{r}
+
+all_excluded <- unique(c(study_excluded_subjects,
+                  test_response_bias_excluded,
+                  test_mean_rt_excluded,
+                  test_mean_novel_accuracy_excluded))
+
+length(all_excluded)
+
+```
+
+Our participants were recruited online and completed the experiment from a web browser. Our experiment script requests that participants attempt the task to the best of their ability. Nevertheless, it is possible that participants complete the experiment and submit data without attempting to complete the task as directed. We developed a set of criteria to exclude participants whose performance indicated they were not attempting the task as instructed. These criteria also allowed us to confirm that the participants we included in the analysis did attempt the task as instructed to the best of their ability. We adopted the following five criteria:
+
+First, during the encoding phase participants responded to each instructional cue (to remember or forget the picture on each trial) by pressing "R" or "F" on the keyboard. This task demand further served as an attentional check. We excluded participants who scored lower than 75% correct on instructional cue identification responses. Second, participants who did not respond on more than 25% of trials in the recognition test were excluded. Third, we measured response bias (choosing the left or right picture) during the recognition test, and excluded participants who made 75% of their responses to one side (indicating they were repeatedly pressing the same button on each trial). Fourth, we excluded participants whose mean reaction time during the recognition test was less than 300ms, indicating they were pressing the buttons as fast as possible without making a recognition decision. Finally, we computed mean accuracy for the novel lure condition for all participants, and excluded participants whose mean accuracy was less than 55% for those items. All together  `r length(all_excluded)` participants were excluded.
+
+# Accuracy analysis
+
+## Define Helper functions
+
+To do, consider moving the functions into the R package for this project
+
+```{r}
+# attempt general solution
+
+## Declare helper functions
+
+################
+# get_mean_sem
+# data = a data frame
+# grouping_vars = a character vector of factors for analysis contained in data
+# dv = a string indicated the dependent variable colunmn name in data
+# returns data frame with grouping variables, and mean_{dv}, sem_{dv}
+# note: dv in mean_{dv} and sem_{dv} is renamed to the string in dv
+
+get_mean_sem <- function(data, grouping_vars, dv, digits=3){
+  a <- data %>%
+    group_by_at(grouping_vars) %>%
+    summarize("mean_{ dv }" := round(mean(.data[[dv]]), digits),
+              "sem_{ dv }" := round(sd(.data[[dv]])/sqrt(length(.data[[dv]])),digits),
+              .groups="drop")
+  return(a)
+}
+
+################
+# get_effect_names
+# grouping_vars = a character vector of factors for analysis
+# returns a named list
+# list contains all main effects and interaction terms
+# useful for iterating the computation means across design effects and interactions
+
+get_effect_names <- function(grouping_vars){
+  effect_names <- grouping_vars
+  if( length(grouping_vars > 1) ){
+    for( i in 2:length(grouping_vars) ){
+      effect_names <- c(effect_names,apply(combn(grouping_vars,i),2,paste0,collapse=":"))
+    }
+  }
+  effects <- strsplit(effect_names, split=":")
+  names(effects) <- effect_names
+  return(effects)
+}
+
+################
+# print_list_of_tables
+# table_list = a list of named tables
+# each table is printed 
+# names are header level 3
+
+print_list_of_tables <- function(table_list){
+  for(i in 1:length(table_list)){
+    cat("###",names(table_list[i]))
+    cat("\n")
+    print(knitr::kable(table_list[[i]]))
+    cat("\n")
+  }
+}
+```
+
+## Conduct Analysis
+
+```{r}
+
+# create list to hold results
+Accuracy <- list()
+
+# Pre-process data for analysis
+# assign to "filtered_data" object
+Accuracy$filtered_data <- all_data %>%
+  filter(experiment_phase == "test", 
+         ID %in% all_excluded == FALSE)
+
+# declare factors, IVS, subject variable, and DV
+Accuracy$factors$IVs <- c("encoding_stimulus_time",
+                          "encoding_instruction",
+                          "test_condition")
+Accuracy$factors$subject <- "ID"
+Accuracy$factors$DV <- "correct"
+
+## Subject-level means used for ANOVA
+# get individual subject means for each condition
+Accuracy$subject_means <- get_mean_sem(data=Accuracy$filtered_data,
+                                       grouping_vars = c(Accuracy$factors$subject,
+                                                         Accuracy$factors$IVs),
+                                       dv = Accuracy$factors$DV)
+## Condition-level means
+# get all possible main effects and interactions
+Accuracy$effects <- get_effect_names(Accuracy$factors$IVs)
+
+Accuracy$means <- lapply(Accuracy$effects, FUN = function(x) {
+  get_mean_sem(data=Accuracy$filtered_data,
+             grouping_vars = x,
+             dv = Accuracy$factors$DV)
+})
+
+## ANOVA
+
+# ensure factors are factor class
+Accuracy$subject_means <- Accuracy$subject_means %>%
+  mutate_at(Accuracy$factors$IVs,factor) %>%
+  mutate_at(Accuracy$factors$subject,factor)
+
+# run ANOVA
+Accuracy$aov.out <- aov(mean_correct ~ encoding_stimulus_time*encoding_instruction*test_condition + Error(ID/(encoding_stimulus_time*encoding_instruction*test_condition)), Accuracy$subject_means)
+
+# save printable summaries
+Accuracy$apa_print <- papaja::apa_print(Accuracy$aov.out)
+
+```
+
+## Graphs
+
+```{r}
+Accuracy$graphs$figure <- ggplot(Accuracy$means$`encoding_stimulus_time:encoding_instruction:test_condition`, 
+                                 aes(x=test_condition,
+                                     y=mean_correct,
+                                     group=encoding_instruction,
+                                     fill=encoding_instruction))+
+  geom_bar(stat="identity", position="dodge")+
+  geom_errorbar(aes(ymin = mean_correct-sem_correct,
+                    ymax = mean_correct+sem_correct),
+                width=.9, position=position_dodge2(width = 0.2, padding = 0.8))+
+  facet_wrap(~encoding_stimulus_time)+
+  coord_cartesian(ylim=c(.4,1))+
+  geom_hline(yintercept=.5)+
+  scale_y_continuous(breaks = seq(0.4,1,.1))+
+  theme_classic(base_size=12)+
+  ylab("Proportion Correct")+
+  xlab("Lure Type")+
+  scale_fill_discrete(name = " Encoding \n Instruction") +
+  ggtitle("E2: Proportion Correct by Stimulus Encoding Duration, \n Encoding Instruction, and Lure Type")
+
+Accuracy$graphs$figure
+```
+
+## Print ANOVA
+
+```{r, results="asis"}
+knitr::kable(xtable(summary(Accuracy$aov.out)))
+```
+
+## Print Means
+
+```{r, results="asis"}
+print_list_of_tables(Accuracy$means)
+```
+
+## Comparisons
+
+```{r}
+## Encoding time x instruction
+Accuracy$simple$DF_500 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "500") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_correct) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+Accuracy$simple$DF_1000 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "1000") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_correct) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+Accuracy$simple$DF_2000 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "2000") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_correct) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+# encoding time x test condition
+
+Accuracy$simple$test_500 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "500") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_correct) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+Accuracy$simple$test_1000 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "1000") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_correct) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+Accuracy$simple$test_2000 <- Accuracy$subject_means %>%
+  filter(encoding_stimulus_time == "2000") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_correct = mean(mean_correct)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_correct) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+```
+
+
+## Write-up
+
+```{r}
+## helper print functions
+qprint <- function(data,iv,level,dv){
+   data[[iv]] %>%
+   filter(.data[[iv]] == {level}) %>%
+   pull(dv)
+}
+
+qprint_mean_sem <- function(data,iv,level,dv){
+   dv_mean <- data[[iv]] %>%
+   filter(.data[[iv]] == {level}) %>%
+   pull(dv[1])
+   
+   dv_sem <- data[[iv]] %>%
+   filter(.data[[iv]] == {level}) %>%
+   pull(dv[2])
+   
+   return(paste("M = ", 
+    dv_mean,
+    ", SEM = ",
+    dv_sem,
+    sep=""))
+   
+}
+
+# qprint(Accuracy$means,"encoding_stimulus_time","500","mean_correct")
+# qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","500",c("mean_correct","sem_correct"))
+
+# use data.table for interactions
+
+#t <- as.data.table(Accuracy$means$`encoding_stimulus_time:encoding_instruction`)
+#t[encoding_stimulus_time==500 & encoding_instruction == "F"]$mean_correct
+
+
+```
+
+
+Proportion correct for each subject in each condition was submitted to a 3 (Encoding Duration: 500ms, 1000ms, 2000ms) x 2 (Encoding Instruction: Forget vs. Remember) x 2 (Lure type: Novel vs. Exemplar) fully repeated measures ANOVA. For completeness, each main effect and higher-order interaction is described in turn.
+
+The main effect of encoding duration was significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time`. Proportion correct was lowest for the 500 ms duration (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","500",c("mean_correct","sem_correct")) `), and higher for the 1000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","1000",c("mean_correct","sem_correct")) `), and 2000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","2000",c("mean_correct","sem_correct")) `) stimulus durations.
+
+The main effect of encoding instruction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction`. Proportion correct was similar for remember cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","R",c("mean_correct","sem_correct")) `) and forget cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","F",c("mean_correct","sem_correct")) `).
+
+The main effect of lure type was significant, `r Accuracy$apa_print$full_result$test_condition`. Proportion correct was higher for novel lures (`r qprint_mean_sem(Accuracy$means,"test_condition","novel",c("mean_correct","sem_correct")) `) than exemplar lures (`r qprint_mean_sem(Accuracy$means,"test_condition","exemplar",c("mean_correct","sem_correct")) `).
+
+The main question of interest was whether directing forgetting would vary across the encoding duration times. The interaction between encoding instruction and encoding duration was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction`. 
+
+Paired sample t-tests were used to assess the directed forgetting effect at each encoding duration. The directed forgetting effect is taken as the difference between proportion correct for remember minus forget items. At 500 ms, the directed forgetting effect was not significant, `r Accuracy$simple$DF_500$full_result`. At 1000ms, the directed forgetting effect was  not significant, `r Accuracy$simple$DF_1000$full_result`. And, at 2000 ms, the directed forgetting effect was again not detected, `r Accuracy$simple$DF_2000$full_result`.
+
+The encoding duration by lure type interaction was not significnat, `r Accuracy$apa_print$full_result$encoding_stimulus_time_test_condition`. The encoding instruction by lure type interaction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction_test_condition`. Similarly, the interaction between encoding duration, instruction, and lure type was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction_test_condition`. 
+
+# Reaction Time Analysis
+
+## Conduct Analysis
+
+```{r}
+
+# create list to hold results
+RT <- list()
+
+# Pre-process data for analysis
+# assign to "filtered_data" object
+RT$filtered_data <- all_data %>%
+  filter(experiment_phase == "test", 
+         ID %in% all_excluded == FALSE,
+         rt != "NULL") %>%
+  mutate(rt = as.numeric(rt)) %>%
+  filter(rt < 10000)
+
+# declare factors, IVS, subject variable, and DV
+RT$factors$IVs <- c("encoding_stimulus_time",
+                          "encoding_instruction",
+                          "test_condition")
+RT$factors$subject <- "ID"
+RT$factors$DV <- "rt"
+
+## Subject-level means used for ANOVA
+# get individual subject means for each condition
+RT$subject_means <- get_mean_sem(data=RT$filtered_data,
+                                       grouping_vars = c(RT$factors$subject,
+                                                         RT$factors$IVs),
+                                       dv = RT$factors$DV)
+## Condition-level means
+# get all possible main effects and interactions
+RT$effects <- get_effect_names(RT$factors$IVs)
+
+RT$means <- lapply(RT$effects, FUN = function(x) {
+  get_mean_sem(data=RT$filtered_data,
+             grouping_vars = x,
+             dv = RT$factors$DV)
+})
+
+## ANOVA
+
+# ensure factors are factor class
+RT$subject_means <- RT$subject_means %>%
+  mutate_at(RT$factors$IVs,factor) %>%
+  mutate_at(RT$factors$subject,factor)
+
+# run ANOVA
+RT$aov.out <- aov(mean_rt ~ encoding_stimulus_time*encoding_instruction*test_condition + Error(ID/(encoding_stimulus_time*encoding_instruction*test_condition)), RT$subject_means)
+
+# save printable summaries
+RT$apa_print <- papaja::apa_print(RT$aov.out)
+
+```
+
+## Graphs
+
+```{r}
+RT$graphs$figure <- ggplot(RT$means$`encoding_stimulus_time:encoding_instruction:test_condition`, 
+                                 aes(x=test_condition,
+                                     y=mean_rt,
+                                     group=encoding_instruction,
+                                     fill=encoding_instruction))+
+  geom_bar(stat="identity", position="dodge")+
+  geom_errorbar(aes(ymin = mean_rt-sem_rt,
+                    ymax = mean_rt+sem_rt),
+                width=.9, position=position_dodge2(width = 0.2, padding = 0.8))+
+  facet_wrap(~encoding_stimulus_time)+
+  coord_cartesian(ylim=c(1500,2500))+
+  scale_y_continuous(breaks = seq(1500,2500,100))+
+  theme_classic(base_size=12)+
+  ylab("Mean RT (ms)")+
+  xlab("Lure Type")+
+  scale_fill_discrete(name = " Encoding \n Instruction") +
+  ggtitle("E2: Mean RT by Stimulus Encoding Duration, \n Encoding Instruction, and Lure Type")
+
+RT$graphs$figure
+```
+
+## Print ANOVA
+
+```{r, results="asis"}
+knitr::kable(xtable(summary(RT$aov.out)))
+```
+
+## Print Means
+
+```{r, results="asis"}
+print_list_of_tables(RT$means)
+```
+
+## Comparisons
+
+```{r}
+## Encoding time x instruction
+RT$simple$DF_500 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "500") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_rt) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+RT$simple$DF_1000 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "1000") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_rt) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+RT$simple$DF_2000 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "2000") %>%
+  group_by(ID,encoding_instruction) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = encoding_instruction,
+              values_from = mean_rt) %>%
+  mutate(difference = R-F) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+# encoding time x test condition
+
+RT$simple$test_500 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "500") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_rt) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+RT$simple$test_1000 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "1000") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_rt) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+RT$simple$test_2000 <- RT$subject_means %>%
+  filter(encoding_stimulus_time == "2000") %>%
+  group_by(ID,test_condition) %>%
+  summarize(mean_rt = mean(mean_rt)) %>%
+  pivot_wider(names_from = test_condition,
+              values_from = mean_rt) %>%
+  mutate(difference = novel-exemplar) %>%
+  pull(difference) %>%
+  t.test() %>%
+  papaja::apa_print()
+
+```
+
+
+## Write-up
+
+Mean reaction times on correct trials for each subject in each condition were submitted to a 3 (Encoding Duration: 500ms, 1000ms, 2000ms) x 2 (Encoding Instruction: Forget vs. Remember) x 2 (Lure type: Novel vs. Exemplar) fully repeated measures ANOVA. For brevity we report only the significant effects. The full analysis is contained in supplementary materials.
+
+The main effect of lure type was significant, `r RT$apa_print$full_result$test_condition`. Mean reaction times were faster in the novel lure condition (`r qprint_mean_sem(RT$means,"test_condition","novel",c("mean_rt","sem_rt")) `) than exemplar lure condition (`r qprint_mean_sem(RT$means,"test_condition","exemplar",c("mean_rt","sem_rt")) `).
+
+The remaining main effects and interactions were not significant.
+
+## save environment
+
+```{r}
+save.image("data/E3/E3_data_write_up.RData")
+```
+
+
+
+
+
+
