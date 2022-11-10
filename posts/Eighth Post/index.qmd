@@ -1,0 +1,9 @@
+---
+title: "Eighth Blog Post"
+author: "Wesley Huang"
+date: "2022-11-09"
+categories: [r,learn]
+image: "images/Tree.jpeg"
+---
+
+Week 8: Data Analysis

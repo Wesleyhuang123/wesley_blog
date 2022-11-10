@@ -66,8 +66,7 @@ A total of `r dim(demographics)[1]` participants were recruited from Amazon's Me
 
 We are interested in including participants who attempted to perform the task to the best of their ability. We adopted the following exclusion criteria.
 
-1. Lower than 75% correct during the encoding task. This means that participants failed to correctly press the F or R keys on each trial.
-
+1.  Lower than 75% correct during the encoding task. This means that participants failed to correctly press the F or R keys on each trial.
 
 ```{r}
 # select data from the study phase
@@ -102,8 +101,7 @@ ggplot(study_accuracy, aes(x=mean_correct))+
 
 ```
 
-2. More than 25% Null responses (120*.25 = 30) during test. NULL responses mean that the participant did not respond on a test trial after 10 seconds.
-
+2.  More than 25% Null responses (120\*.25 = 30) during test. NULL responses mean that the participant did not respond on a test trial after 10 seconds.
 
 ```{r, eval=FALSE}
 # select data from the study phase
@@ -124,8 +122,7 @@ ggplot(test_null, aes(x=n))+
 
 ```
 
-3. Higher than 75% response bias in the recognition task. This suggests that participants were simply pressing the same button on most trials. 
-
+3.  Higher than 75% response bias in the recognition task. This suggests that participants were simply pressing the same button on most trials.
 
 ```{r}
 test_response_bias <- all_data %>%
@@ -150,7 +147,7 @@ ggplot(test_response_bias, aes(x=bias))+
 
 ```
 
-4. Making responses too fast during the recognition memory test, indicating that they weren't performing the task. We excluded participants whose mean RT was less than 300 ms.
+4.  Making responses too fast during the recognition memory test, indicating that they weren't performing the task. We excluded participants whose mean RT was less than 300 ms.
 
 ```{r}
 test_mean_rt <- all_data %>%
@@ -172,7 +169,7 @@ ggplot(test_mean_rt, aes(x=mean_RT))+
 
 ```
 
-5. Subjects are included if they perform better than 55% correct on the novel lures.
+5.  Subjects are included if they perform better than 55% correct on the novel lures.
 
 ```{r}
 test_mean_novel_accuracy <- all_data %>%
@@ -193,7 +190,6 @@ ggplot(test_mean_novel_accuracy, aes(x=mean_correct))+
 
 ```
 
-
 ## All exclusions
 
 ```{r}
@@ -209,7 +205,7 @@ length(all_excluded)
 
 Our participants were recruited online and completed the experiment from a web browser. Our experiment script requests that participants attempt the task to the best of their ability. Nevertheless, it is possible that participants complete the experiment and submit data without attempting to complete the task as directed. We developed a set of criteria to exclude participants whose performance indicated they were not attempting the task as instructed. These criteria also allowed us to confirm that the participants we included in the analysis did attempt the task as instructed to the best of their ability. We adopted the following five criteria:
 
-First, during the encoding phase participants responded to each instructional cue (to remember or forget the picture on each trial) by pressing "R" or "F" on the keyboard. This task demand further served as an attentional check. We excluded participants who scored lower than 75% correct on instructional cue identification responses. Second, participants who did not respond on more than 25% of trials in the recognition test were excluded. Third, we measured response bias (choosing the left or right picture) during the recognition test, and excluded participants who made 75% of their responses to one side (indicating they were repeatedly pressing the same button on each trial). Fourth, we excluded participants whose mean reaction time during the recognition test was less than 300ms, indicating they were pressing the buttons as fast as possible without making a recognition decision. Finally, we computed mean accuracy for the novel lure condition for all participants, and excluded participants whose mean accuracy was less than 55% for those items. All together  `r length(all_excluded)` participants were excluded.
+First, during the encoding phase participants responded to each instructional cue (to remember or forget the picture on each trial) by pressing "R" or "F" on the keyboard. This task demand further served as an attentional check. We excluded participants who scored lower than 75% correct on instructional cue identification responses. Second, participants who did not respond on more than 25% of trials in the recognition test were excluded. Third, we measured response bias (choosing the left or right picture) during the recognition test, and excluded participants who made 75% of their responses to one side (indicating they were repeatedly pressing the same button on each trial). Fourth, we excluded participants whose mean reaction time during the recognition test was less than 300ms, indicating they were pressing the buttons as fast as possible without making a recognition decision. Finally, we computed mean accuracy for the novel lure condition for all participants, and excluded participants whose mean accuracy was less than 55% for those items. All together `r length(all_excluded)` participants were excluded.
 
 # Accuracy analysis
 
@@ -436,7 +432,6 @@ Accuracy$simple$test_2000 <- Accuracy$subject_means %>%
 
 ```
 
-
 ## Write-up
 
 ```{r}
@@ -475,20 +470,19 @@ qprint_mean_sem <- function(data,iv,level,dv){
 
 ```
 
-
 Proportion correct for each subject in each condition was submitted to a 3 (Encoding Duration: 500ms, 1000ms, 2000ms) x 2 (Encoding Instruction: Forget vs. Remember) x 2 (Lure type: Novel vs. Exemplar) fully repeated measures ANOVA. For completeness, each main effect and higher-order interaction is described in turn.
 
-The main effect of encoding duration was significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time`. Proportion correct was lowest for the 500 ms duration (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","500",c("mean_correct","sem_correct")) `), and higher for the 1000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","1000",c("mean_correct","sem_correct")) `), and 2000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","2000",c("mean_correct","sem_correct")) `) stimulus durations.
+The main effect of encoding duration was significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time`. Proportion correct was lowest for the 500 ms duration (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","500",c("mean_correct","sem_correct"))`), and higher for the 1000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","1000",c("mean_correct","sem_correct"))`), and 2000 ms (`r qprint_mean_sem(Accuracy$means,"encoding_stimulus_time","2000",c("mean_correct","sem_correct"))`) stimulus durations.
 
-The main effect of encoding instruction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction`. Proportion correct was similar for remember cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","R",c("mean_correct","sem_correct")) `) and forget cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","F",c("mean_correct","sem_correct")) `).
+The main effect of encoding instruction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction`. Proportion correct was similar for remember cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","R",c("mean_correct","sem_correct"))`) and forget cues (`r qprint_mean_sem(Accuracy$means,"encoding_instruction","F",c("mean_correct","sem_correct"))`).
 
-The main effect of lure type was significant, `r Accuracy$apa_print$full_result$test_condition`. Proportion correct was higher for novel lures (`r qprint_mean_sem(Accuracy$means,"test_condition","novel",c("mean_correct","sem_correct")) `) than exemplar lures (`r qprint_mean_sem(Accuracy$means,"test_condition","exemplar",c("mean_correct","sem_correct")) `).
+The main effect of lure type was significant, `r Accuracy$apa_print$full_result$test_condition`. Proportion correct was higher for novel lures (`r qprint_mean_sem(Accuracy$means,"test_condition","novel",c("mean_correct","sem_correct"))`) than exemplar lures (`r qprint_mean_sem(Accuracy$means,"test_condition","exemplar",c("mean_correct","sem_correct"))`).
 
-The main question of interest was whether directing forgetting would vary across the encoding duration times. The interaction between encoding instruction and encoding duration was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction`. 
+The main question of interest was whether directing forgetting would vary across the encoding duration times. The interaction between encoding instruction and encoding duration was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction`.
 
-Paired sample t-tests were used to assess the directed forgetting effect at each encoding duration. The directed forgetting effect is taken as the difference between proportion correct for remember minus forget items. At 500 ms, the directed forgetting effect was not significant, `r Accuracy$simple$DF_500$full_result`. At 1000ms, the directed forgetting effect was  not significant, `r Accuracy$simple$DF_1000$full_result`. And, at 2000 ms, the directed forgetting effect was again not detected, `r Accuracy$simple$DF_2000$full_result`.
+Paired sample t-tests were used to assess the directed forgetting effect at each encoding duration. The directed forgetting effect is taken as the difference between proportion correct for remember minus forget items. At 500 ms, the directed forgetting effect was not significant, `r Accuracy$simple$DF_500$full_result`. At 1000ms, the directed forgetting effect was not significant, `r Accuracy$simple$DF_1000$full_result`. And, at 2000 ms, the directed forgetting effect was again not detected, `r Accuracy$simple$DF_2000$full_result`.
 
-The encoding duration by lure type interaction was not significnat, `r Accuracy$apa_print$full_result$encoding_stimulus_time_test_condition`. The encoding instruction by lure type interaction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction_test_condition`. Similarly, the interaction between encoding duration, instruction, and lure type was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction_test_condition`. 
+The encoding duration by lure type interaction was not significnat, `r Accuracy$apa_print$full_result$encoding_stimulus_time_test_condition`. The encoding instruction by lure type interaction was not significant, `r Accuracy$apa_print$full_result$encoding_instruction_test_condition`. Similarly, the interaction between encoding duration, instruction, and lure type was not significant, `r Accuracy$apa_print$full_result$encoding_stimulus_time_encoding_instruction_test_condition`.
 
 # Reaction Time Analysis
 
@@ -656,12 +650,11 @@ RT$simple$test_2000 <- RT$subject_means %>%
 
 ```
 
-
 ## Write-up
 
 Mean reaction times on correct trials for each subject in each condition were submitted to a 3 (Encoding Duration: 500ms, 1000ms, 2000ms) x 2 (Encoding Instruction: Forget vs. Remember) x 2 (Lure type: Novel vs. Exemplar) fully repeated measures ANOVA. For brevity we report only the significant effects. The full analysis is contained in supplementary materials.
 
-The main effect of lure type was significant, `r RT$apa_print$full_result$test_condition`. Mean reaction times were faster in the novel lure condition (`r qprint_mean_sem(RT$means,"test_condition","novel",c("mean_rt","sem_rt")) `) than exemplar lure condition (`r qprint_mean_sem(RT$means,"test_condition","exemplar",c("mean_rt","sem_rt")) `).
+The main effect of lure type was significant, `r RT$apa_print$full_result$test_condition`. Mean reaction times were faster in the novel lure condition (`r qprint_mean_sem(RT$means,"test_condition","novel",c("mean_rt","sem_rt"))`) than exemplar lure condition (`r qprint_mean_sem(RT$means,"test_condition","exemplar",c("mean_rt","sem_rt"))`).
 
 The remaining main effects and interactions were not significant.
 
@@ -670,9 +663,3 @@ The remaining main effects and interactions were not significant.
 ```{r}
 save.image("data/E3/E3_data_write_up.RData")
 ```
-
-
-
-
-
-
