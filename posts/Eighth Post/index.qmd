@@ -1,7 +1,7 @@
 ---
 title: "Eighth Blog Post"
 author: "Wesley Huang"
-date: "2022-11-09"
+date: "2022-11-16"
 categories: [r,learn]
 image: "images/Tree.jpeg"
 ---
