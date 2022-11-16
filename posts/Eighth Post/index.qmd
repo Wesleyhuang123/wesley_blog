@@ -7,3 +7,11 @@ image: "images/Tree.jpeg"
 ---
 
 Week 8: Data Analysis
+
+![](https://wesleyhuang123.github.io/wesley_blog/E3_DF_pairs_files/figure-html/unnamed-chunk-13-1.png)
+
+After collecting data from 17 total participants in our experiment, we found results consistent with directed forgetting and the results we hoped for the previous time we've analyzed the data. In both the 500ms and the 2000ms tests, we found directed forgetting in the exemplar test similar to those found in the previous Ahmad (2019) results we tried to recreate. Moreover, as expected the novel test was generally easier to recall from memory than the exemplar test which was consistent across all the times.
+
+One important thing to note was that our experiment was coded to exclude certain data from participants that may not have been actively trying the task or using their abilities to complete the experiment. Their data were coded to be identified and removed from the final results. However, a good thing is that of the 17 participant's data we collected so far, none were identified to be removed.
+
+![Another cool thing I found was that reaction time for the exemplar took longer than the reaction time for the novel. This is still expected, as generally we would predict it would take longer for the participants to process the exemplar information than the novel information as the exemplar images are much more similar than the novel ones. In other words, the exemplar images may not always be as obvious to identify as the novel images. These results are a good sign as it indicates that the participants are actually trying during the encoding phase instead of just pressing random buttons and not following the instructions of the experiment.](https://wesleyhuang123.github.io/wesley_blog/E3_DF_pairs_files/figure-html/unnamed-chunk-19-1.png)
