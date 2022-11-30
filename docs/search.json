@@ -67,35 +67,63 @@
     "href": "Slides.html#introduction",
     "title": "Slides",
     "section": "Introduction",
-    "text": "Introduction\nHi, my name is Wesley and today I will be presenting my research on directed forgetting."
+    "text": "Introduction\nHi, my name is Wesley and today I will be presenting my research on directed forgetting. (I was thinking of creating a separate Google slides for my presentation)"
   },
   {
-    "objectID": "Slides.html#research-questionwhy-it-matters",
-    "href": "Slides.html#research-questionwhy-it-matters",
+    "objectID": "Slides.html#poster",
+    "href": "Slides.html#poster",
     "title": "Slides",
-    "section": "Research Question/Why It Matters",
-    "text": "Research Question/Why It Matters"
+    "section": "Poster",
+    "text": "Poster\n(Insert Poster)"
+  },
+  {
+    "objectID": "Slides.html#research-question",
+    "href": "Slides.html#research-question",
+    "title": "Slides",
+    "section": "Research Question",
+    "text": "Research Question\nDirected forgetting in a sense tests a person’s ability to control both what we can remember and what we can forget intentionally We set out to find: -If people can intentionally forget memorable picture information -If pictures were easier to forget if they are made less memorable"
+  },
+  {
+    "objectID": "Slides.html#why-it-matters",
+    "href": "Slides.html#why-it-matters",
+    "title": "Slides",
+    "section": "Why It Matters",
+    "text": "Why It Matters\nResearch regarding directed forgetting can answer questions such as: -Why we remember certain information better than others? -Can we control our brains to forget certain information? -Plus it is generally cool to know if humans possess full capabilities of their brain functions and memory."
   },
   {
     "objectID": "Slides.html#research-method",
     "href": "Slides.html#research-method",
     "title": "Slides",
     "section": "Research Method",
-    "text": "Research Method"
+    "text": "Research Method\nWe coded a directed forgetting experiment using R-studio in attempt to recreate the directed forgetting results found from Ahmad’s original experiment. In our experiment during the encoding phase, we would flash random pictures followed by delays of 500ms, 1000ms, and 2000ms. Following the picture after the delay, the participant would be given an instruction either to forget or remember the previous picture. This process would repeat 120 times. (consider adding picture of the experiment for visualization)"
+  },
+  {
+    "objectID": "Slides.html#research-method-background-color-aquamarine",
+    "href": "Slides.html#research-method-background-color-aquamarine",
+    "title": "Slides",
+    "section": "Research Method {background-color= “Aquamarine”}",
+    "text": "Research Method {background-color= “Aquamarine”}\nAfter the encoding phase, we would test the participants on their ability to recall the images and see if there was a directed forgetting effect. We did this by having two tests (an exemplar and a novel test). In the exemplar test, we showed two very similar pictures and we would ask the participant to make a choice regarding which picture they saw during the encoding phase. In the novel test, we showed two pictures from completely different categories and we would ask the participant to make a choice regarding which picture they saw during the encoding phase. The exemplar test was designed to be harder than the novel test since it may take the participant more time to recall which picture they saw previously."
+  },
+  {
+    "objectID": "Slides.html#exemplar-vs-novel-test",
+    "href": "Slides.html#exemplar-vs-novel-test",
+    "title": "Slides",
+    "section": "Exemplar vs Novel Test",
+    "text": "Exemplar vs Novel Test\n(Insert picture of exemplar test) (Insert picture of novel test)"
   },
   {
     "objectID": "Slides.html#results",
     "href": "Slides.html#results",
     "title": "Slides",
     "section": "Results",
-    "text": "Results"
+    "text": "Results\n(Insert Result Graph)"
   },
   {
     "objectID": "Slides.html#conclusion",
     "href": "Slides.html#conclusion",
     "title": "Slides",
     "section": "Conclusion",
-    "text": "Conclusion"
+    "text": "Conclusion\nWe were not fully able to replicate the results from Ahmad’s original experiment. We think this may be due to a variety of factors: -Motivation (The participant’s in Ahmad’s experiments may have been more motivated and invested in trying the task out by getting something out of their time in the experiment) -Environment (The participant’s in the Ahmad’s experiments may have taken the experiment in a controlled lab setting) -We did not have adequate time to collect data from a larger sample group.\nHowever we did find:\nTherefore:"
   },
   {
     "objectID": "index.html",

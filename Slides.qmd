@@ -7,11 +7,43 @@ format: revealjs
 
 ## Introduction {background-color="Aquamarine"}
 Hi, my name is Wesley and today I will be presenting my research on directed forgetting. 
+(I was thinking of creating a separate Google slides for my presentation)
 
-## Research Question/Why It Matters {background-color="Aquamarine"}
+## Poster {background-color="Aquamarine"}
+(Insert Poster)
+
+## Research Question {background-color="Aquamarine"}
+Directed forgetting in a sense tests a person's ability to control both what we can remember and what we can forget intentionally
+We set out to find:
+-If people can intentionally forget memorable picture information
+-If pictures were easier to forget if they are made less memorable
+
+## Why It Matters {background-color="Aquamarine"}
+Research regarding directed forgetting can answer questions such as: 
+-Why we remember certain information better than others?
+-Can we control our brains to forget certain information?
+-Plus it is generally cool to know if humans possess full capabilities of their brain functions and memory.
 
 ## Research Method {background-color="Aquamarine"}
+We coded a directed forgetting experiment using R-studio in attempt to recreate the directed forgetting results found from Ahmad's original experiment. In our experiment during the encoding phase, we would flash random pictures followed by delays of 500ms, 1000ms, and 2000ms. Following the picture after the delay, the participant would be given an instruction either to forget or remember the previous picture. This process would repeat 120 times. 
+(consider adding picture of the experiment for visualization)
+
+## Research Method {background-color= "Aquamarine"}
+After the encoding phase, we would test the participants on their ability to recall the images and see if there was a directed forgetting effect. We did this by having two tests (an exemplar and a novel test). In the exemplar test, we showed two very similar pictures and we would ask the participant to make a choice regarding which picture they saw during the encoding phase. In the novel test, we showed two pictures from completely different categories and we would ask the participant to make a choice regarding which picture they saw during the encoding phase. The exemplar test was designed to be harder than the novel test since it may take the participant more time to recall which picture they saw previously. 
+
+## Exemplar vs Novel Test {background-color="Aquamarine"}
+(Insert picture of exemplar test) 
+(Insert picture of novel test)
 
 ## Results {background-color="Aquamarine"}
+(Insert Result Graph)
 
 ## Conclusion {background-color="Aquamarine"}
+We were not fully able to replicate the results from Ahmad's original experiment. We think this may be due to a variety of factors:
+-Motivation (The participant's in Ahmad's experiments may have been more motivated and invested in trying the task out by getting something out of their time in the experiment)
+-Environment (The participant's in the Ahmad's experiments may have taken the experiment in a controlled lab setting)
+-We did not have adequate time to collect data from a larger sample group.
+
+However we did find: 
+
+Therefore:
