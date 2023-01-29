@@ -1,0 +1,14 @@
+---
+title: "Ninth Blog Post"
+author: "Wesley Huang"
+date: "2023-1-29"
+categories: [r,learn]
+image: "images/Tree.jpeg"
+---
+
+Week 9: Exploring jsPsych
+
+As a prospective psychology major student still new to coding and taking the next step to explore how to create experiments, my initial impression of jsPsych is that is is quite confusing. However, I believe with the proper guidance from Professor Crump, I will be able to be put on a good track for my independent research this semester. Here are a few of my documented curiosities as I am going through the website:
+
+1.  I read that to edit jsPsych code, I need a programming-friendly text editor like "Visual Studi Code on windows, OSX, Linux). I was wondering what I need to specifically download and will I be working inside R Studio(for writing the code for the experiments)?
+2.  I checked the video tutorials tab, but are there specific YouTube channels or do you have your own personal video tutorials of jsPsych?
