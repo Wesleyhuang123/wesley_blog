@@ -98,9 +98,6 @@ for (i in 1:100)
 
 Demo Experiment: Simple Reaction Time Task
 
-```{}
-```
-
 ```{r}
 <!DOCTYPE html>
 <html>
