@@ -12,3 +12,5 @@ As a prospective psychology major student still new to coding and taking the nex
 
 1.  I read that to edit jsPsych code, I need a programming-friendly text editor like "Visual Studi Code on windows, OSX, Linux). I was wondering what I need to specifically download and will I be working inside R Studio(for writing the code for the experiments)?
 2.  I checked the video tutorials tab, but are there specific YouTube channels or do you have your own personal video tutorials of jsPsych?
+
+After trying out the basics, it is now time for on hands learning. I attempted to recreate the simple reaction time task demo experiment.
