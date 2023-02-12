@@ -8,3 +8,7 @@ resources: "CODE"
 ---
 
 Here is the link to the Blue/Orange experiment I coded:
+
+<file:///Users/coglab/Documents/Github/wesley_blog/posts/Tenth%20Post/CODE/blueorange.html>
+
+<https://wesleyhuang123.github.io/wesley_blog/posts/Tenth%20Post/CODE/blueorange.html>
