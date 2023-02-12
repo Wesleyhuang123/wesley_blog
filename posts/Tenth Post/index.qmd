@@ -1,0 +1,10 @@
+---
+title: "Tenth Blog Post"
+author: "Wesley Huang"
+date: "2023-2-07"
+categories: [r,learn]
+image: "images/Tree.jpeg"
+resources: "CODE"
+---
+
+Here is the link to the Blue/Orange experiment I coded:
