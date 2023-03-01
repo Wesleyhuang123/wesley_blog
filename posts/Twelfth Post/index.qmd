@@ -1,0 +1,15 @@
+---
+title: "Twelfth Blog Post"
+author: "Wesley Huang"
+date: "2023-02-28"
+categories: [r,learn]
+image: "images/Nature.jpeg"
+---
+
+Hick- Hyman Experiment:
+
+Hick's Law states that the amount of time to make a decision increases as there are more choices to make. It measures one's ability to make decisions in different amounts of uncertainty. Important definitions to note: 1. Reaction Time- time between onset of a stimulus and the start of a response 2. Movement Time- the time it takes to complete an onset of a movement 3. Response Time- the time it takes to process information and then make a response
+
+Cool fact: Taller people have a slower reaction time than shorter people because of distance.
+
+Hick created an equation to calculate reaction time: RT= MT + processing speed \* log2(n) (Reaction time is equal to movement time plus processing speed times log2(amount of choices)) Professor Crump and I will be recreating several experiments using Hick-Hyman's idea in mind.
