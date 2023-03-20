@@ -1,0 +1,17 @@
+---
+title: "Thirteenth Blog Post"
+author: "Wesley Huang"
+date: "2023-03-20"
+categories: [r,learn]
+image: "images/Nature.jpeg"
+---
+
+Eriksen and Eriksen- 1974: Effects of noise letters upon the identification of a target letter in a nonsearch task
+
+Notes on what I think I would need to modify in my flanker code:
+
+1.  I would change the instructions to see a set of 7 letters, and then they would see a noise or italicized letter, that they would have to correctly identify and press the letter of that is corresponding on their keyboard.
+2.  I would modify it to have 5 stimulus trials, one with 7 Hs and an italicized H, one with 6 Ks, and an italicized H, one with 6 Ss and an italicized H, one with the letters NWZ once in the beginning and once in the end with an italicized H, and one with the letters CJQ once in the beginning and once in the end with an italicized H. The correct response for all of these would be set to the targeted noise letter or H.
+3.  For the line of the letter choices in var test, I would add the letters K, S, N , W, Z, G, Q.
+
+With these changes, the experiment should work for table 1.
