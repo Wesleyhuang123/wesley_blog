@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My test experiment</title>
+    <script src="https://unpkg.com/jspsych@7.3.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <link href="https://unpkg.com/jspsych@7.3.1/css/jspsych.css"rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+
+    /* is a comment, for information */
+    /* initialize jsPsych */
+    var jsPsych = initJsPsych({
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    });
+
+    /* create timeline */
+    var timeline = [];
+
+    /* define welcome message trial */
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
+
+    /* define instructions trial */
+    var instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+       <p> Below are the instructions for you to follow: </p>
+       <br>
+       <p> You will see a set of three letters pop up on your screen. Your goal is to identify the middle letter in the set as fast you can, and then press the key on the keyboard corresponding to the letter. </p>
+       <p> Press any key of your choice on the keyboard to continue! </p>
+      `,
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
+
+    /* define trial stimuli array for timeline variables */
+    var test_stimuli = [
+      { stimulus: '<div style="font-size:50px;">F F F</div>',  correct_response: 'f', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">J J J</div>',  correct_response: 'j', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">H H H</div>',  correct_response: 'h', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">D D D</div>',  correct_response: 'd', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">F F F</div>',  correct_response: 'f', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">J J J</div>',  correct_response: 'j', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">H H H</div>',  correct_response: 'h', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">D D D</div>',  correct_response: 'd', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">F F F</div>',  correct_response: 'f', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">J J J</div>',  correct_response: 'j', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">H H H</div>',  correct_response: 'h', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">D D D</div>',  correct_response: 'd', type: "compatible"},
+      { stimulus: '<div style="font-size:50px;">J F J</div>',  correct_response: 'f', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">H F H</div>',  correct_response: 'f', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">D F D</div>',  correct_response: 'f', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">F J F</div>',  correct_response: 'j', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">H J H</div>',  correct_response: 'j', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">D J D</div>',  correct_response: 'j', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">F H F</div>',  correct_response: 'h', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">J H J</div>',  correct_response: 'h', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">D H D</div>',  correct_response: 'h', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">F D F</div>',  correct_response: 'd', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">J D J</div>',  correct_response: 'd', type: "incompatible"},
+      { stimulus: '<div style="font-size:50px;">H D H</div>',  correct_response: 'd', type: "incompatible"}
+    ];
+
+    /* define fixation and test trials */
+    var fixation = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<div style="font-size:50px;">+</div>',
+      choices: "NO_KEYS",
+      trial_duration: 1000,
+      data: {
+        task: 'fixation'
+      }
+    };
+
+    var test = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: ['d', 'f','h','j'],
+      data: {
+        task: 'response',
+        correct_response: jsPsych.timelineVariable('correct_response'),
+        type: jsPsych.timelineVariable('type')
+      },
+      on_finish: function(data){
+        data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+      }
+    };
+
+    /* define test procedure */
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 1,
+      randomize_order: true
+    };
+    timeline.push(test_procedure);
+
+    /* start the experiment */
+    jsPsych.run(timeline);
+
+  </script>
+</html>

@@ -1,0 +1,25 @@
+---
+title: "Fourteenth Blog Post"
+author: "Wesley Huang"
+date: "2023-04-06"
+categories: [r,learn]
+image: "images/Nature.jpeg"
+---
+
+Xandra Kredlow Annotated Bibliography:
+
+Kredlow, Xandra. (2020). Catching As and Zs: poor sleep quality predicts failure to increase study time. Nueropsychopharmacology.
+
+Xandra set out to find the association between sleep quality and academic performance in college students. She went into the study with background knowledge that sleep disruption affects mood and cognition which impairs school functioning. She wanted to identify whether or not a behavior change attempt on sleep habits would improve studying behavior. She did this by assigning three interventions (action planning intervention, dissonance-based intervention, and a reflection-based control) to participants in her experiment. The results were found to be contrary to her original prediction that the reflection intervention would result in the least goal-consistent studying behavior. Instead, she found that studying time increased in all three interventions, perhaps as a result of the formal goal setting and monitoring inherent to the study. However, she acknowledges that this study may be limited due to reliance on self reporting data for sleep and study habits by the students. She concludes her research by saying that there are potential benefits of intervening with sleep specifically, as part of efforts to improve academic behaviors.
+
+Kredlow, Xandra. (2015). The effects of physical activity on sleep: a meta-analytic review. Nueropsychopharmacology.
+
+Xandra identifies that sleep problems such as chronic insomnia are extremely common and may lead to a poorer quality of life. She notes that in the U.S. insomnia and heart disease are the leading causes of death in the U.S. and costs the U.S. \$14 billion annually in treatment-related causes. She sets out to find the effect of acute or regular physical activity on a self-reported or biological measure of total sleep time, sleep onset latency, wake time after sleep onset, number of awakenings after sleep onset, sleep maintenance, and overall sleep efficiency. She compares her results to a meta-analysis and notes that they are mostly consistent. Physical activity was found in general to have helped improve overall sleep quality. She also notes that acute exercise had beneficial but small effects on total sleep time, slow wave sleep, and sleep onset latency, while regular exercise showed significantly better benefits in sleep over a long run. However, she did find that longer and more consistent exercise periods along with consistent periods of sleep were the most effective and beneficial.
+
+Kredlow, Xandra. (2012). Anchoring the Panic Disorder Severity Scale. Nueropsycho.
+
+Xandra set out to find whether the Panic Disorder Severity Scale (PDSS) is effective and should be used in clinical practices. She simplified the usage of the scale to "Normal" = 0, "Borderline ill" = 3, "Mildly ill" = 8, "Moderately ill" = 12, "Markedly ill" = 16-17, and "Among the most severely ill" = 21-22. She had trained psychologists to use the PDSS and CGI-S (Clinical Global Impression Scale) to rate participants on the state of their mental health. Her results provide further support for the validity and clinical utility of the PDSS, and provide simple guidance for the use of the PDSS scale in judgments about panic disorder severity in clinical practice. Xandra was able to associate an increase in PDSS scores with an increase in illness severity as rated by the CGI-S. For example, a total PDSS score of 5 or lower is equivalent to a CGI-S rating of "Normal" or "Borderline ill" and might indicate that psychiatric treatment is not warranted. Whereas a score of 10 or more might indicate that the treatment is needed immediately.
+
+Kredlow, Xandra. (2022). Prefrontal cortex, amygdala, and threat processing: implications for PTSD. Nueropsychopharmacology.
+
+Xandra set out to figure out the role of the prefrontal cortex in fear processing a and how to treat the posttraumatic stress disorder that occurs as a result of it. She compared the similar parts/functions of the rat brains to human brains regarding fear. Xandra identifies the human anatomy highlighting regions involved in threat learning, extinction, avoidance, cognitive regulation, and the contextual modulation of threat expression. These regions are the prelimbic cortex, infralimbic cortex; dorsal anterior cingulate cortex, ventromedial prefrontal cortex, and the dorsolateral prefrontal cortex. She is unable to make any true conclusions on the research as it is ongoing and still open to review. However, she does find similarities between human and rat fear processing and her experiment supports that idea.
